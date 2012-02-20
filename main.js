@@ -44,7 +44,27 @@ jQuery(function(){
         }
     
         , open: function(){
-            $(this.el).css("z-index", 10);
+            $(this.el).css("background-color",function(){
+                var color = $(this).attr("data-color")
+                ; var nextColor
+                ; switch(color)
+                {
+                    case "#ccf":
+                        nextColor = "#cfc"
+                        ; break
+                    case "#cfc":
+                        nextColor = "yellow"
+                        ; break
+                    case "yellow":
+                        nextColor = "#ccf"
+                        ; break                    
+                    default:
+                        nextColor = "#ccf"
+                        ; break
+                }
+                ; $(this).attr("data-color", nextColor)
+                ; return nextColor
+            } );
             console.log("just clicked me")
         }
     })

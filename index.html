@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>TO-do Doing Done</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
+    <script type='text/javascript' src='main.js'></script>
+  </head>
+  <body>
+     <div id="tdddApp">
+         <ul id="to-do">
+             <h2>Todo</h2>
+             <li class="to-do">
+                 <h3>Finish the Paper</h3>
+                 <div class="note">For CI8133</div>
+             </li>
+             <li class="to-do">
+                 <h3>Finish the Paper</h3>
+                 <div class="note">For CI8133</div>
+             </li>
+             <li class="to-do">
+                 <h3>Finish the Paper</h3>
+                 <div class="note">For CI8133</div>
+             </li>             
+             <li class="to-do">
+                 <h3>Finish the Paper</h3>
+                 <div class="note">For CI8133</div>
+             </li>
+         </ul>
+         <ul id="doing">
+             <h2>Doing</h2>
+         </ul>
+         <ul id="done">             
+             <h2>Done</h2>
+         </ul>
+      </div> 
+  </body>
+      <script type="text/template" id="todo-template">
+          <h3><%= title %></h3>
+          <div class="note"><%= note %></div>
+      </script>
+      <script type="text/template" id="content-template">
+
+      </script>
+</html>

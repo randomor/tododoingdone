@@ -8,20 +8,19 @@ jQuery(function(){
         
     ; window.StickyView = Backbone.View.extend({
         tagName: "li"
-        
         , className: "sticky"
-        
         , events: {
             "click h3": "open"
         }
-    
         , template: _.template($('#sticky-template').html())
-    
+        ,initialize: function() {
+            this.model.bind('change', this.render, this);
+            // this.model.bind('destroy', this.remove, this);
+        }
         , render: function(){
-            $(this.el).html(this.template(this.model)).addClass(this.model.color)
+            $(this.el).html(this.template(this.model.toJSON())).addClass(this.model.toJSON().color)
             ; return this;
         }
-    
         , open: function(){
             var self = this
             ; $(this.el).html("<textarea>"+this.model.title+"</textarea>").find("textarea").focus(function(){
@@ -42,23 +41,67 @@ jQuery(function(){
 
         }
     })
+
+    ; window.Td = Backbone.Model.extend({
+        defaults: function(){
+            return {
+                status: "todo"
+                , order: Tddds.nextOrder()
+            }
+        }
+    })
+    ; window.TdddList = Backbone.Collection.extend({
+        model: Td
+        , localStorage: new Store("Tds")
+        , todo: function(){
+            return this.filter(function(td){return td.get('status')=="todo"})
+        }
+        , doing: function(){
+            return this.filter(function(td){return td.get('status')=="doing"})
+        }
+        , done: function(){
+            return this.filter(function(td){return td.get('status')=="done"})
+        }
+        , nextOrder: function(){
+            //needs to be refactored for three lists
+            if(!this.lenght) return 1
+            ; return this.last().get('order')+1;
+        }
+        , comparator: function(td) {
+            return td.get('order');
+        }
+        
+    })
+
+    ; window.Tddds = new TdddList;
     
     ; window.TdddApp = Backbone.View.extend({
         el: $("#tdddApp")
-
         , initialize: function(){
-            _.each(this.model, function(todo){
-                var stickyView = new StickyView({model: todo})
-                ; $("#todo-list").append(stickyView.render().el); 
-            })
+            Tddds.bind('add',   this.addOne, this);
+            Tddds.bind('reset', this.addAll, this);
+            Tddds.bind('all',  this.render, this);
+
+            Tddds.fetch();
             ; return this;
+        }
+        ,addOne: function(todo) {
+            var view = new StickyView({model: todo});
+            $("#todo-list").append(view.render().el);
+        }
+        , addAll: function() {
+            Tddds.each(this.addOne)
+        }
+        , render: function(){
+            return this;
         }
     })
     
-    ; var todoList = [{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"}]
-    ; var todoList2 = [{"title":"1", "color": "#ccf"}, {"title": "2", "color": "#ccf"}, {"title": "3", "color": "#cfc"}, {"title": "4", "color": "#cfc"}, {"title": "5", "color": "#ccf"}]    
-    ;   new TdddApp({model: todoList}); 
+    ; window.todoList = [{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"}]
+    ; window.App = new TdddApp; 
 
+    //seed the data:
+    // _.each(todoList, function(td){Tddds.create(td)});
 
     
 })

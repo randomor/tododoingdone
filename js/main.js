@@ -46,6 +46,7 @@ jQuery(function(){
         defaults: function(){
             return {
                 status: "todo"
+                , color: "yellow"
                 , order: Tddds.nextOrder()
             }
         }
@@ -86,8 +87,13 @@ jQuery(function(){
             ; return this;
         }
         ,addOne: function(todo) {
-            var view = new StickyView({model: todo});
-            $("#todo-list").append(view.render().el);
+            var view = new StickyView({model: todo})
+            ; var status=todo.toJSON().status
+            ; switch(status){
+                case "todo": $("#todo-list").append(view.render().el); break;
+                case "doing": $("#doing-list").append(view.render().el); break;
+                case "done": $("#done-list").append(view.render().el); break;
+            }
         }
         , addAll: function() {
             Tddds.each(this.addOne)
@@ -97,11 +103,12 @@ jQuery(function(){
         }
     })
     
-    ; window.todoList = [{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"}]
+    ; window.todoList = [{"title":"Finish paper for CI8133","status":"todo", "color": "blue"}, {"title": "Start working on Indelearn", "status":"done","color": "yellow"}, {"title": "Start planning for springbreak","status":"todo", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"},{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "status":"todo", "color": "yellow"}, {"title": "Start planning for springbreak", "status":"done","color": "green"}, {"title": "Creating a tddd app","status":"doing", "color": "pink"}, {"title": "Get an Intern", "color": "grey"}]
     ; window.App = new TdddApp; 
 
     //seed the data:
-    // _.each(todoList, function(td){Tddds.create(td)});
+    // localStorage.setItem("Tds", "")
+    // ;_.each(todoList, function(td){Tddds.create(td)});
 
     
 })

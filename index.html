@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html manifest="main.mf">
   <head>
-      <title>TO-do Doing Done</title>
+      <title>To-do Doing Done</title>
 	<meta charset="utf-8">
     <link rel="stylesheet" href="main.css" type="text/css" />
     <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
-    <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="backbone-min.js"></script>
     <script type='text/javascript' src='main.js'></script>
   </head>
   <body>
@@ -17,32 +17,44 @@
          </ul>
          <ul id="doing-list">
              <h2>Doing</h2>
-             <li class="to-do">
+             <li class="sticky">
                  <h3>Finish the Paper</h3>
-                 <div class="note">For CI8133</div>
              </li>             
-             <li class="to-do">
+             <li class="sticky">
                  <h3>Finish the Paper</h3>
-                 <div class="note">For CI8133</div>
              </li>
          </ul>
          <ul id="done-list">             
              <h2>Done</h2>
-             <li class="to-do">
-                 <h3>Finish the Paper</h3>
-                 <div class="note">For CI8133</div>
+             <li class="sticky">
+                 <h3>Get This app done!</h3>
+                 <div class="toolbar">
+                    <ul class="color-picker">
+                     <li class="color-yellow"></li>
+                     <li class="color-blue"></li>
+                     <li class="color-green"></li>
+                     <li class="color-pink"></li>
+                    </ul>
+                </div>
              </li>             
-             <li class="to-do">
+             <li class="sticky">
                  <h3>Finish the Paper</h3>
-                 <div class="note">For CI8133</div>
              </li>
          </ul>
       </div> 
   </body>
-      <script type="text/template" id="todo-template">
+      <script type="text/template" id="sticky-template">
           <h3><%= title %></h3>
-          <div class="note">note</div>
-      </script>
+          <div class="note"></div>
+         <div class="toolbar handle">
+            <ul class="color-picker">
+             <li class="color-yellow"></li>
+             <li class="color-blue"></li>
+             <li class="color-green"></li>
+             <li class="color-pink"></li>
+            </ul>
+        </div>      
+        </script>
       <script type="text/template" id="content-template">
 
       </script>

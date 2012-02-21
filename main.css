@@ -77,4 +77,5 @@ li.sticky textarea {width: 94%; height: 90%; margin-top:0.5em; border-color: #89
 .sticky.purple{background-color: #b6caff;}
 .sticky.grey{background-color: #eeeeee;}
 
+#tdddApp ul li.sticky:hover, #tdddApp ul li.sticky:focus{-moz-box-shadow:10px 10px 7px rgba(0,0,0,.7); -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7); box-shadow:10px 10px 7px rgba(0,0,0,.7); -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -o-transform: scale(1.25); position:relative; z-index:5;}
 

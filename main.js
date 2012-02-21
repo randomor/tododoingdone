@@ -18,7 +18,7 @@ jQuery(function(){
         , template: _.template($('#sticky-template').html())
     
         , render: function(){
-            $(this.el).html(this.template(this.model)).css("background-color", this.model.color)
+            $(this.el).html(this.template(this.model)).addClass(this.model.color)
             ; return this;
         }
     
@@ -47,7 +47,7 @@ jQuery(function(){
         }
     })
     
-    ; var todoList = [{"title":"Finish paper for CI8133", "color": "#ccf"}, {"title": "Start working on Indelearn", "color": "#ccf"}, {"title": "Start planning for springbreak", "color": "#cfc"}, {"title": "Creating a tddd app", "color": "#cfc"}, {"title": "Get an Intern", "color": "#ccf"}]
+    ; var todoList = [{"title":"Finish paper for CI8133", "color": "blue"}, {"title": "Start working on Indelearn", "color": "yellow"}, {"title": "Start planning for springbreak", "color": "green"}, {"title": "Creating a tddd app", "color": "pink"}, {"title": "Get an Intern", "color": "grey"}]
     ; var todoList2 = [{"title":"1", "color": "#ccf"}, {"title": "2", "color": "#ccf"}, {"title": "3", "color": "#cfc"}, {"title": "4", "color": "#cfc"}, {"title": "5", "color": "#ccf"}]    
     ;   new TdddApp({model: todoList}); 
 

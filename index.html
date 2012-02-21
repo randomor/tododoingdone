@@ -17,43 +17,74 @@
          </ul>
          <ul id="doing-list">
              <h2>Doing</h2>
-             <li class="sticky">
-                 <h3>Finish the Paper</h3>
-             </li>             
-             <li class="sticky">
-                 <h3>Finish the Paper</h3>
-             </li>
-         </ul>
-         <ul id="done-list">             
-             <h2>Done</h2>
-             <li class="sticky">
-                 <h3>Get This app done!</h3>
-                 <div class="toolbar">
-                    <ul class="color-picker">
-                     <li class="color-yellow"></li>
-                     <li class="color-blue"></li>
-                     <li class="color-green"></li>
-                     <li class="color-pink"></li>
-                    </ul>
-                </div>
-             </li>             
-             <li class="sticky">
-                 <h3>Finish the Paper</h3>
-             </li>
-         </ul>
-      </div> 
-  </body>
-      <script type="text/template" id="sticky-template">
-          <h3><%= title %></h3>
-          <div class="note"></div>
+             <li class="sticky green">
          <div class="toolbar handle">
             <ul class="color-picker">
              <li class="color-yellow"></li>
              <li class="color-blue"></li>
              <li class="color-green"></li>
              <li class="color-pink"></li>
+             <li class="color-purple"></li>
+             <li class="color-grey"></li>            
             </ul>
-        </div>      
+        </div>                      <h3>Finish the Paper</h3>
+             </li>             
+             <li class="sticky pink">
+         <div class="toolbar handle">
+            <ul class="color-picker">
+             <li class="color-yellow"></li>
+             <li class="color-blue"></li>
+             <li class="color-green"></li>
+             <li class="color-pink"></li>
+             <li class="color-purple"></li>
+             <li class="color-grey"></li>            
+            </ul>
+        </div>                      <h3>Finish the Paper</h3>
+             </li>
+         </ul>
+         <ul id="done-list">             
+  
+             <h2>Done</h2>
+             <li class="sticky yellow">
+         <div class="toolbar handle">
+            <ul class="color-picker">
+             <li class="color-yellow"></li>
+             <li class="color-blue"></li>
+             <li class="color-green"></li>
+             <li class="color-pink"></li>
+             <li class="color-purple"></li>
+             <li class="color-grey"></li>            
+            </ul>
+        </div>                      <h3>Get This app done!</h3>
+             </li>             
+             <li class="sticky grey">
+         <div class="toolbar handle">
+            <ul class="color-picker">
+             <li class="color-yellow"></li>
+             <li class="color-blue"></li>
+             <li class="color-green"></li>
+             <li class="color-pink"></li>
+             <li class="color-purple"></li>
+             <li class="color-grey"></li>            
+            </ul>
+        </div>                      <h3>Finish the Paper</h3>
+             </li>
+         </ul>
+      </div> 
+  </body>
+      <script type="text/template" id="sticky-template">
+         <div class="toolbar handle">
+            <ul class="color-picker">
+             <li class="color-yellow"></li>
+             <li class="color-blue"></li>
+             <li class="color-green"></li>
+             <li class="color-pink"></li>
+             <li class="color-purple"></li>
+             <li class="color-grey"></li>            
+            </ul>
+        </div>            
+        <h3><%= title %></h3>
+          <div class="note"></div>
         </script>
       <script type="text/template" id="content-template">
 

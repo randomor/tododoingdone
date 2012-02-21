@@ -53,7 +53,7 @@ background-repeat: repeat repeat;
 height: 100%;
 }*/
 
-html{border-width:15px;-webkit-border-image:url("border.png") 30 30 stretch;border-image:url(border.png) 30 30 round;min-height:95%;}
+html{border-width:25px 25px 45px 25px;-webkit-border-image:url("border.png") 40 40 stretch;border-image:url(border.png) 30 30 round;min-height:92%;}
 body {font-size: 62.5%; font-family: Helvetica, sans-serif; }
 #tdddApp {width: 100%; }
 #tdddApp ul {/*border-right: 0.2em dashed yellow;*/}

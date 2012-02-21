@@ -24,7 +24,15 @@ jQuery(function(){
     
         , open: function(){
             var self = this
-            ; $(this.el).html("<textarea>"+this.model.title+"</textarea>").find("textarea").keypress(function(e) {
+            ; $(this.el).html("<textarea>"+this.model.title+"</textarea>").find("textarea").focus(function(){
+                //focus on the last character
+                var val = this.value;
+                var $this = $(this);
+                $this.val("");
+                setTimeout(function () {
+                    $this.val(val);
+                    }, 1);
+            }).focus().keypress(function(e) {
                 if(e.keyCode == 13) {
                     self.model.title=$(e.currentTarget).val()
                     ; self.render();

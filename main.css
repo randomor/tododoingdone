@@ -42,24 +42,14 @@ table {
 	border-spacing: 0;
 }
 
-/*html {
-background: #e8ae48;
-background-image: url("grid.png"),  -webkit-radial-gradient(center,#ffffff,#000000);
-background-image:  url("grid.png"), -moz-radial-gradient(circle,#ffffff,#e8ae48);
-background-image:url("grid.png"),  -o-radial-gradient(#ffffff,#e8ae48);
-background-image: url("grid.png"), -ms-radial-gradient(#ffffff,#e8ae48);
-background:url("grid.png"), radial-gradient(#ffffff,#000000);
-background-repeat: repeat repeat;
-height: 100%;
-}*/
 
-html{border-width:25px 25px 45px 25px;-webkit-border-image:url("border.png") 40 40 stretch;border-image:url(border.png) 30 30 round;min-height:92%;}
+html{border-width:25px 25px 45px 25px;-webkit-border-image:url("border.png") 40 40 stretch;border-image:url(border.png) 30 30 round;min-height:100%;}
 body {font-size: 62.5%; font-family: Helvetica, sans-serif; }
 #tdddApp {width: 100%; }
 #tdddApp ul {/*border-right: 0.2em dashed yellow;*/}
 #tdddApp ul:last-child {border-right: none;}
 #tdddApp ul h2 {font-size: 2em; margin: 0.5em; text-align: center; /*font-variant: small-caps; */color:black;  font-family:"Delius Unicase","Permanent Marker", cursive;}
-#tdddApp ul li.sticky {position: relative; width: 10em; height: 10em; float: left; margin: 1em; padding: 0 0.6em 0.6em 0.6em; box-shadow: 5px 5px 7px rgba(33,33,33,.7);font-size: 1em;}
+#tdddApp ul li.sticky {position: relative; width: 10em; height: 10em; float: left; margin: 1em; padding: 0 0.6em 0.6em 0.6em; box-shadow: 2px 2px 7px rgba(33,33,33,.2);font-size: 1em;}
 li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: left; padding: 0.6em; font-size: 1em; margin:1em; border: 0.2em dashed #feea3d; }
 #todo-list, #doing-list, #done-list {width:100%; display: inline-block; float: left;}
 #tdddApp>ul>li:nth-child(even){-o-transform:rotate(4deg); -webkit-transform:rotate(4deg); -moz-transform:rotate(4deg); }
@@ -88,5 +78,5 @@ li.sticky textarea {width: 94%; height: 90%; margin-top:0.5em; border-color: #89
 .sticky.purple{background-color: #b6caff;}
 .sticky.grey{background-color: #eeeeee;}
 
-#tdddApp ul li.sticky:hover, #tdddApp ul li.sticky:focus{-moz-box-shadow:10px 10px 7px rgba(0,0,0,.7); -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7); box-shadow:10px 10px 7px rgba(0,0,0,.7); -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -o-transform: scale(1.25); position:relative; z-index:5;}
+#tdddApp ul li.sticky:hover, #tdddApp ul li.sticky:focus{-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3); -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.3); box-shadow:10px 10px 7px rgba(0,0,0,.3); -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -o-transform: scale(1.25); position:relative; z-index:5;}
 

@@ -42,19 +42,30 @@ table {
 	border-spacing: 0;
 }
 
+/*html {
+background: #e8ae48;
+background-image: url("grid.png"),  -webkit-radial-gradient(center,#ffffff,#000000);
+background-image:  url("grid.png"), -moz-radial-gradient(circle,#ffffff,#e8ae48);
+background-image:url("grid.png"),  -o-radial-gradient(#ffffff,#e8ae48);
+background-image: url("grid.png"), -ms-radial-gradient(#ffffff,#e8ae48);
+background:url("grid.png"), radial-gradient(#ffffff,#000000);
+background-repeat: repeat repeat;
+height: 100%;
+}*/
 
-body {background: url(linen.jpg) repeat; font-size: 62.5%; font-family: Helvetica, sans-serif; }
+html{border-width:15px;-webkit-border-image:url("border.png") 30 30 stretch;border-image:url(border.png) 30 30 round;min-height:95%;}
+body {font-size: 62.5%; font-family: Helvetica, sans-serif; }
 #tdddApp {width: 100%; }
 #tdddApp ul {/*border-right: 0.2em dashed yellow;*/}
 #tdddApp ul:last-child {border-right: none;}
-#tdddApp ul h2 {font-size: 2em; margin: 0.5em; text-align: center; font-variant: small-caps; color:White; background-color: rgba(255, 255, 255, 0.1);}
+#tdddApp ul h2 {font-size: 2em; margin: 0.5em; text-align: center; /*font-variant: small-caps; */color:black;  font-family:"Delius Unicase","Permanent Marker", cursive;}
 #tdddApp ul li.sticky {position: relative; width: 10em; height: 10em; float: left; margin: 1em; padding: 0 0.6em 0.6em 0.6em; box-shadow: 5px 5px 7px rgba(33,33,33,.7);font-size: 1em;}
-li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: left; padding: 0.6em; font-size: 1em; margin:1em; border: 0.2em dashed white; }
-#todo-list, #doing-list, #done-list {width:33%; display: inline-block; float: left;}
-#tdddApp ul li:nth-child(even){-o-transform:rotate(4deg); -webkit-transform:rotate(4deg); -moz-transform:rotate(4deg); }
-#tdddApp ul li:nth-child(3n){-o-transform:rotate(-3deg); -webkit-transform:rotate(-3deg); -moz-transform:rotate(-3deg);}
+li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: left; padding: 0.6em; font-size: 1em; margin:1em; border: 0.2em dashed #feea3d; }
+#todo-list, #doing-list, #done-list {width:100%; display: inline-block; float: left;}
+#tdddApp>ul>li:nth-child(even){-o-transform:rotate(4deg); -webkit-transform:rotate(4deg); -moz-transform:rotate(4deg); }
+#tdddApp>ul>li:nth-child(3n){-o-transform:rotate(-3deg); -webkit-transform:rotate(-3deg); -moz-transform:rotate(-3deg);}
 
-#tdddApp ul li h3 {height:90%; font-size:1.8em; line-height:1.2em; font-family:"Handlee", cursive;}
+#tdddApp ul li h3 {height:90%; font-size:1.8em; line-height:1.2em; font-family: "Handlee", cursive;}
 
 .sticky .toolbar:hover .color-picker {visibility: visible;}
 .sticky .toolbar .color-picker{visibility: hidden;}

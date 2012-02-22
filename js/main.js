@@ -34,8 +34,8 @@ jQuery(function(){
                 case "done-list": this.model.set("status", "done").save(); break;
             }
             //update order
-            ; var updateOrder = function(listName){
-                var result = $(listName).sortable('toArray')
+            ; var updateOrder = function(ln){
+                var result = $("#"+ln).sortable('toArray')
                 ; _.each(result, function(id, i){
                     var td=Tddds.get(id)
                     ;if(td){

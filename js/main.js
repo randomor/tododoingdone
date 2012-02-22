@@ -3,20 +3,27 @@ jQuery(function(){
         
     ; window.StickyView = Backbone.View.extend({
         tagName: "li"
+        
         , className: "sticky"
+        
         , events: {
             "click h3": "open"
+            ,"click .color-picker li": "pickColor"
             , "sortupdate": "updateSort"
         }
+        
         , template: _.template($('#sticky-template').html())
+        
         ,initialize: function() {
             this.model.bind('change', this.render, this);
             // this.model.bind('destroy', this.remove, this);
         }
+        
         , render: function(){
-            $(this.el).html(this.template(this.model.toJSON())).addClass(this.model.toJSON().color).attr("id", this.model.id)
+            $(this.el).html(this.template(this.model.toJSON())).removeClass('yellow blue green pink purple grey').addClass(this.model.toJSON().color).attr("id", this.model.id)
             ; return this;
         }
+        
         , updateSort: function(event){
             ; var listName = $(event.currentTarget).parent().attr("id")
             ; var status = this.model.get("status")
@@ -38,6 +45,12 @@ jQuery(function(){
             ; updateOrder(listName)
             ; updateOrder(status+"-list")
         }
+        
+        , pickColor: function(e){
+            ; var className = $(e.currentTarget).attr("class")
+            ; this.model.set("color", className).save()
+        }
+        
         , open: function(){
             var self = this
             ; $(this.el).html("<textarea>"+this.model.get("title")+"</textarea>").find("textarea").focus(function(){

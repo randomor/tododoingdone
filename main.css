@@ -63,12 +63,12 @@ li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: lef
 .toolbar .color-picker {float:left; display: inline-block; height:0.6em;}
 .color-picker li {float:left; margin-top: 2px; width:1em; height:0.6em; display:inline-block}
 .color-picker li:hover {border-top:2px solid black; margin-top: 0px}
-.color-picker li.color-yellow{background-color: #feea3d;}
-.color-picker li.color-blue{background-color: #89f0ff;}
-.color-picker li.color-green{background-color: #83fe83;}
-.color-picker li.color-pink{background-color: #ffb2b2;}
-.color-picker li.color-purple{background-color: #9bb6fe;}
-.color-picker li.color-grey{background-color: #dadada;}
+.color-picker li.yellow{background-color: #feea3d;}
+.color-picker li.blue{background-color: #89f0ff;}
+.color-picker li.green{background-color: #83fe83;}
+.color-picker li.pink{background-color: #ffb2b2;}
+.color-picker li.purple{background-color: #9bb6fe;}
+.color-picker li.grey{background-color: #dadada;}
 li.sticky textarea {width: 94%; height: 90%; margin-top:0.5em; border-color: #899BC1; resize:none; background-color: rgba(255,255,255,0.6);}
 
 .sticky.yellow{background-color: #fef49c;}

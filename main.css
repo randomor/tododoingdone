@@ -57,8 +57,9 @@ li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: lef
 
 #tdddApp ul li h3 {height:90%; font-size:1.8em; line-height:1.2em; font-family: "Handlee", cursive;}
 
-.sticky .toolbar:hover .color-picker {visibility: visible;}
-.sticky .toolbar .color-picker{visibility: hidden;}
+.sticky .toolbar:hover .color-picker, .sticky .toolbar:hover .close{visibility: visible;}
+.sticky .toolbar .color-picker, .sticky .toolbar .close{visibility: hidden;}
+.toolbar .close a {float:right; font-size: 1em; text-decoration:none;opacity:0.6;filter:alpha(opacity=40);}
 .toolbar { height:1em;}
 .toolbar .color-picker {float:left; display: inline-block; height:0.6em;}
 .color-picker li {float:left; margin-top: 2px; width:1em; height:0.6em; display:inline-block}

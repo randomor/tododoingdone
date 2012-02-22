@@ -10,18 +10,28 @@ jQuery(function(){
             "click h3": "open"
             ,"click .color-picker li": "pickColor"
             , "sortupdate": "updateSort"
+            , "click .close a" : "clear"
         }
         
         , template: _.template($('#sticky-template').html())
         
         ,initialize: function() {
             this.model.bind('change', this.render, this);
-            // this.model.bind('destroy', this.remove, this);
+            this.model.bind('destroy', this.remove, this);
         }
         
         , render: function(){
             $(this.el).html(this.template(this.model.toJSON())).removeClass('yellow blue green pink purple grey').addClass(this.model.toJSON().color).attr("id", this.model.id)
             ; return this;
+        }
+
+        , clear: function() {
+            this.model.destroy();
+        }
+        
+        , remove: function() {
+            //fadeout doesn't work TODO
+            $(this.el).fadeOut("slow").remove();
         }
         
         , updateSort: function(event){

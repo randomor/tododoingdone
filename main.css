@@ -59,8 +59,8 @@ li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: lef
 
 .sticky .toolbar:hover .color-picker {visibility: visible;}
 .sticky .toolbar .color-picker{visibility: hidden;}
-.toolbar {cursor: move; height:1em;}
-.toolbar .color-picker {float:left; display: inline-block; cursor: default; height:0.6em;}
+.toolbar { height:1em;}
+.toolbar .color-picker {float:left; display: inline-block; height:0.6em;}
 .color-picker li {float:left; margin-top: 2px; width:1em; height:0.6em; display:inline-block}
 .color-picker li:hover {border-top:2px solid black; margin-top: 0px}
 .color-picker li.color-yellow{background-color: #feea3d;}

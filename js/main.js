@@ -23,7 +23,7 @@ jQuery(function(){
         }
         , open: function(){
             var self = this
-            ; $(this.el).html("<textarea>"+this.model.title+"</textarea>").find("textarea").focus(function(){
+            ; $(this.el).html("<textarea>"+this.model.get("title")+"</textarea>").find("textarea").focus(function(){
                 //focus on the last character
                 var val = this.value;
                 var $this = $(this);
@@ -32,10 +32,15 @@ jQuery(function(){
                     $this.val(val);
                     }, 1);
             }).focus().keypress(function(e) {
-                if(e.keyCode == 13) {
-                    self.model.title=$(e.currentTarget).val()
-                    ; self.render();
-                    ; return false;
+                var val=$(e.currentTarget).val()
+                ; if(e.keyCode == 13) {
+                    if(val!=self.model.get("title")){
+                        self.model.set("title", val)
+                        ; self.model.save()
+                    }else{
+                        self.render();
+                    }
+                    return false;
                 }
             })
 

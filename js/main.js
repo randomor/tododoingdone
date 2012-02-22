@@ -4,6 +4,9 @@ jQuery(function(){
         , placeholder: "ui-state-highlight"
         , handle: ".handle"
         , opacity: 0.8
+        , stop: function(event, ui) {
+            ; ui.item.trigger("sortstop")
+        }
     })
         
     ; window.StickyView = Backbone.View.extend({
@@ -11,6 +14,7 @@ jQuery(function(){
         , className: "sticky"
         , events: {
             "click h3": "open"
+            ,"sortstop": "updateSort"
         }
         , template: _.template($('#sticky-template').html())
         ,initialize: function() {
@@ -20,6 +24,15 @@ jQuery(function(){
         , render: function(){
             $(this.el).html(this.template(this.model.toJSON())).addClass(this.model.toJSON().color)
             ; return this;
+        }
+        , updateSort: function(event){
+            ; var listName = $(event.currentTarget).parent().attr("id")
+            ; var status = this.model.get("status")
+            ; switch (listName){
+                case "todo-list": this.model.set("status", "todo").save(); break;
+                case "doing-list": this.model.set("status", "doing").save(); break;
+                case "done-list": this.model.set("status", "done").save(); break;
+            }
         }
         , open: function(){
             var self = this

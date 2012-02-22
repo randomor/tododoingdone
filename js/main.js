@@ -4,8 +4,8 @@ jQuery(function(){
         , placeholder: "ui-state-highlight"
         , handle: ".handle"
         , opacity: 0.8
-        , stop: function(event, ui) {
-            ; ui.item.trigger("sortstop")
+        , update: function(event, ui) {
+            ; ui.item.trigger("sortupdate")
         }
     })
         
@@ -14,7 +14,7 @@ jQuery(function(){
         , className: "sticky"
         , events: {
             "click h3": "open"
-            ,"sortstop": "updateSort"
+            , "sortupdate": "updateSort"
         }
         , template: _.template($('#sticky-template').html())
         ,initialize: function() {
@@ -22,7 +22,7 @@ jQuery(function(){
             // this.model.bind('destroy', this.remove, this);
         }
         , render: function(){
-            $(this.el).html(this.template(this.model.toJSON())).addClass(this.model.toJSON().color)
+            $(this.el).html(this.template(this.model.toJSON())).addClass(this.model.toJSON().color).attr("id", this.model.id)
             ; return this;
         }
         , updateSort: function(event){
@@ -33,6 +33,18 @@ jQuery(function(){
                 case "doing-list": this.model.set("status", "doing").save(); break;
                 case "done-list": this.model.set("status", "done").save(); break;
             }
+            //update order
+            ; var updateOrder = function(listName){
+                var result = $(listName).sortable('toArray')
+                ; _.each(result, function(id, i){
+                    var td=Tddds.get(id)
+                    ;if(td){
+                        td.set("order", i).save()
+                    }
+                }) 
+            }
+            ; updateOrder(listName)
+            ; updateOrder(status+"-list")
         }
         , open: function(){
             var self = this
@@ -83,8 +95,8 @@ jQuery(function(){
         }
         , nextOrder: function(){
             //needs to be refactored for three lists
-            if(!this.lenght) return 1
-            ; return this.last().get('order')+1;
+            if(!this.todo().length) return 1
+            ; return this.todo().length+1;
         }
         , comparator: function(td) {
             return td.get('order');

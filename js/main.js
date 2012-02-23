@@ -1,5 +1,4 @@
 jQuery(function(){
-
         
     ; window.StickyView = Backbone.View.extend({
         tagName: "li"
@@ -11,13 +10,14 @@ jQuery(function(){
             ,"click .color-picker li": "pickColor"
             , "sortupdate": "updateSort"
             , "click .close a" : "clear"
+            , "blur textarea": "commitChange"
         }
         
         , template: _.template($('#sticky-template').html())
         
         ,initialize: function() {
-            this.model.bind('change', this.render, this);
-            this.model.bind('destroy', this.remove, this);
+            this.model.bind('change', this.render, this)
+            ; this.model.bind('destroy', this.remove, this)
         }
         
         , render: function(){
@@ -31,24 +31,24 @@ jQuery(function(){
         
         , remove: function() {
             //fadeout doesn't work TODO
-            $(this.el).fadeOut("slow").remove();
+            $(this.el).remove()
         }
         
         , updateSort: function(event){
-            ; var listName = $(event.currentTarget).parent().attr("id")
+            var listName = $(event.currentTarget).parent().attr("id")
             ; var status = this.model.get("status")
             ; switch (listName){
                 case "todo-list": this.model.set("status", "todo").save(); break;
                 case "doing-list": this.model.set("status", "doing").save(); break;
                 case "done-list": this.model.set("status", "done").save(); break;
             }
-            //update order
+            //update order, maybe should be in the model?
             ; var updateOrder = function(ln){
                 var result = $("#"+ln).sortable('toArray')
                 ; _.each(result, function(id, i){
                     var td=Tddds.get(id)
                     ;if(td){
-                        td.set("order", i).save()
+                        td.changeOrder(i)
                     }
                 }) 
             }
@@ -58,7 +58,18 @@ jQuery(function(){
         
         , pickColor: function(e){
             ; var className = $(e.currentTarget).attr("class")
-            ; this.model.set("color", className).save()
+            ; this.model.changeColor(className)
+        }
+        
+        , commitChange: function(e){
+            //NOT DRY
+            var val=$(e.currentTarget).val()
+            ; if(val!=this.model.get("title")){
+                this.model.set("title", val).save()
+            }else{
+                this.render()
+            }
+            ; return false
         }
         
         , open: function(){
@@ -75,12 +86,11 @@ jQuery(function(){
                 var val=$(e.currentTarget).val()
                 ; if(e.keyCode == 13) {
                     if(val!=self.model.get("title")){
-                        self.model.set("title", val)
-                        ; self.model.save()
+                        self.model.set("title", val).save()
                     }else{
-                        self.render();
+                        self.render()
                     }
-                    return false;
+                    ; return false
                 }
             })
 
@@ -95,24 +105,35 @@ jQuery(function(){
                 , order: Tddds.nextOrder()
             }
         }
+        , changeColor: function(color){
+            this.save({"color": color})
+        }
+        , changeOrder: function(o){
+            this.save({"order": o}, {silent: true})
+        }
     })
     ; window.TdddList = Backbone.Collection.extend({
         model: Td
+        
         , localStorage: new Store("Tds")
+        
         , todo: function(){
             return this.filter(function(td){return td.get('status')=="todo"})
         }
+        
         , doing: function(){
             return this.filter(function(td){return td.get('status')=="doing"})
         }
+        
         , done: function(){
             return this.filter(function(td){return td.get('status')=="done"})
         }
+        
         , nextOrder: function(){
-            //needs to be refactored for three lists
-            if(!this.todo().length) return 1
-            ; return this.todo().length+1;
+            if(!this.length) return 1;
+            ; return this.length+1;
         }
+        
         , comparator: function(td) {
             return td.get('order');
         }
@@ -123,6 +144,11 @@ jQuery(function(){
     
     ; window.TdddApp = Backbone.View.extend({
         el: $("#tdddApp")
+        
+        , events: {
+            "click h2" : "addNote"
+        }
+        
         , initialize: function(){
             Tddds.bind('add',   this.addOne, this);
             Tddds.bind('reset', this.addAll, this);
@@ -131,13 +157,26 @@ jQuery(function(){
             Tddds.fetch()
             ; $("#tdddApp ul").sortable({
                 connectWith: "#tdddApp>ul"
+                , items: "li"
                 , placeholder: "ui-state-highlight"
                 , opacity: 0.8
                 , update: function(event, ui) {
                     ; ui.item.trigger("sortupdate")
                 }
             })
+            ; $("#tdddApp>ul>h2").hover(function(e){
+                this.innerHTML = "Click to add a new one!"
+            },
+            function(e){
+                this.innerHTML = $(this).attr("class")
+            })
             ; return this;
+        }
+
+        , addNote: function(e){
+            var status=$(e.currentTarget).attr("class");
+            ;var l=Tddds[status]().length+1
+            ; Tddds.create({"status":status, "title": "", "order": l})
         }
         ,addOne: function(todo) {
             var view = new StickyView({model: todo})

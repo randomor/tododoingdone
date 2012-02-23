@@ -51,7 +51,7 @@ body {font-size: 62.5%; font-family: Helvetica, sans-serif; }
 #tdddApp ul h2 {font-size: 2em; margin: 0.5em; text-align: center; /*font-variant: small-caps; */color:black;  font-family:"Delius Unicase","Permanent Marker", cursive;}
 #tdddApp ul li.sticky {position: relative; width: 10em; height: 10em; float: left; margin: 1em; padding: 0 0.6em 0.6em 0.6em; box-shadow: 2px 2px 7px rgba(33,33,33,.2);font-size: 1em;}
 li.ui-state-highlight {position: relative; width: 10em; height: 10em; float: left; padding: 0.6em; font-size: 1em; margin:1em; border: 0.2em dashed rgb(128,153,182); }
-#todo-list, #doing-list, #done-list {width:33%; display: inline-block; float: left;}
+#todo-list, #doing-list, #done-list {width:33%; display: inline-block; float: left; min-height: 500px;}
 #tdddApp>ul>li:nth-child(even){-o-transform:rotate(4deg); -webkit-transform:rotate(4deg); -moz-transform:rotate(4deg); }
 #tdddApp>ul>li:nth-child(3n){-o-transform:rotate(-3deg); -webkit-transform:rotate(-3deg); -moz-transform:rotate(-3deg);}
 
@@ -80,5 +80,6 @@ li.sticky textarea {width: 94%; height: 90%; margin-top:0.5em; border-color: #89
 .sticky.grey{background-color: #eeeeee;}
 
 #tdddApp ul li.sticky:hover, #tdddApp ul li.sticky:focus{-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3); -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.3); box-shadow:10px 10px 7px rgba(0,0,0,.3); -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -o-transform: scale(1.25); position:relative; z-index:5;}
+
 
 

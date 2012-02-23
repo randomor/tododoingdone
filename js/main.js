@@ -157,7 +157,7 @@ jQuery(function(){
             Tddds.fetch()
             ; $("#tdddApp ul").sortable({
                 connectWith: "#tdddApp>ul"
-                , items: "li"
+                , items: "li.sticky"
                 , placeholder: "ui-state-highlight"
                 , opacity: 0.8
                 , update: function(event, ui) {

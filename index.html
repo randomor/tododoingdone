@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html manifest="main.mf">
+  <head>
+      <title>To-do Doing Done</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Delius+Unicase' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone.js"></script>
+    <script src="js/backbone-localstorage.js"></script>
+    <script type='text/javascript' src='js/main.js'></script>
+  </head>
+  <body>
+     <div id="tdddApp">
+         <ul id="todo-list">
+             <h2 class="todo">Todo</h2>
+         </ul>
+         <ul id="doing-list">
+             <h2 class="doing">Doing</h2>
+         </ul>
+         <ul id="done-list">             
+             <h2 class="done">Done</h2>
+        </ul>
+      </div> 
+  </body>
+      <script type="text/template" id="sticky-template">
+         <div class="toolbar">
+            <ul class="color-picker">
+             <li class="yellow"></li>
+             <li class="blue"></li>
+             <li class="green"></li>
+             <li class="pink"></li>
+             <li class="purple"></li>
+             <li class="grey"></li>            
+            </ul>
+            <span class="close"><a href="#">&#010060</a></span>
+        </div>            
+        <h3><%= title %></h3>
+          <div class="note"></div>
+        </script>
+      <script type="text/template" id="content-template">
+
+      </script>
+</html>

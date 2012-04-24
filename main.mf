@@ -1,7 +1,4 @@
 CACHE MANIFEST
 
 CACHE:
-http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js
-https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js
-http://documentcloud.github.com/underscore/underscore.js
-http://documentcloud.github.com/backbone/backbone.js
+
